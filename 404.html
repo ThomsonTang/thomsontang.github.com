@@ -3,21 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>C语言中的格式化输入函数——scanf() | 摩羯行僧</title>
+  <title>摩羯行僧</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="scanf()函数和printf()函数类似，只是其功能刚好与printf相反，它是用来从标准输入中读取字符的，其形式如下：1int scanf(char *format, ...)
-其中，format是格式化字符串，与printf()中的格式化串类似；后面可以跟若干个参数，用来存储从输入中读入的结果。这里需要注意的是，后面的每个参数都必须是一个指针。返回值是一个整数，是指成功读入值的个数。">
-<meta property="og:type" content="article">
-<meta property="og:title" content="C语言中的格式化输入函数——scanf()">
-<meta property="og:url" content="http://mojiexingseng.com/2012/12/25/the-formatted-input-scanf/index.html">
+  <meta name="description" content="&amp;lt;!DOCTYPE html&amp;gt;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="摩羯行僧">
+<meta property="og:url" content="http://mojiexingseng.com/404.html">
 <meta property="og:site_name" content="摩羯行僧">
-<meta property="og:description" content="scanf()函数和printf()函数类似，只是其功能刚好与printf相反，它是用来从标准输入中读取字符的，其形式如下：1int scanf(char *format, ...)
-其中，format是格式化字符串，与printf()中的格式化串类似；后面可以跟若干个参数，用来存储从输入中读入的结果。这里需要注意的是，后面的每个参数都必须是一个指针。返回值是一个整数，是指成功读入值的个数。">
-<meta property="og:updated_time" content="2015-07-06T10:11:58.000Z">
+<meta property="og:description" content="&amp;lt;!DOCTYPE html&amp;gt;">
+<meta property="og:updated_time" content="2015-07-08T15:51:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="C语言中的格式化输入函数——scanf()">
-<meta name="twitter:description" content="scanf()函数和printf()函数类似，只是其功能刚好与printf相反，它是用来从标准输入中读取字符的，其形式如下：1int scanf(char *format, ...)
-其中，format是格式化字符串，与printf()中的格式化串类似；后面可以跟若干个参数，用来存储从输入中读入的结果。这里需要注意的是，后面的每个参数都必须是一个指针。返回值是一个整数，是指成功读入值的个数。">
+<meta name="twitter:title" content="摩羯行僧">
+<meta name="twitter:description" content="&amp;lt;!DOCTYPE html&amp;gt;">
   
   
     <link rel="icon" href="/favicon.png">
@@ -89,42 +86,34 @@
           <section id="main">
             <div class="main-body-header">
 
-              <h1 class="header"><a class="page-title-link" href="/categories/Technology/">Technology</a></h1>
+              <h1 class="header">摩羯行僧</h1>
             </div>
             <div class="main-body-content">
               
-  <article id="post-the-formatted-input-scanf" class="article article-single article-type-post" itemscope itemprop="blogPost">
+  <article id="page-undefined" class="article article-single article-type-page" itemscope itemprop="blogPost">
     <div class="article-inner">
       <!--  -->
       
-        <header class="article-header">
-          
-  
-    <h1 class="article-title" itemprop="name">
-      C语言中的格式化输入函数——scanf()
-    </h1>
-  
-
-        </header>
-      
       <p class="article-byline">
-        <a href="/2012/12/25/the-formatted-input-scanf/" class="article-date">
-  <time datetime="2012-12-25T06:50:00.000Z" itemprop="datePublished">2012-12-25</time>
+        <a href="/404.html" class="article-date">
+  <time datetime="2015-07-08T15:51:48.000Z" itemprop="datePublished">2015-07-08</time>
 </a>
       </p>
       <div class="article-entry" itemprop="articleBody">
-        <p><strong>scanf()</strong>函数和<strong>printf()</strong>函数类似，只是其功能刚好与printf相反，它是用来从标准输入中读取字符的，其形式如下：<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> scanf(<span class="built_in">char</span> *<span class="keyword">format</span>, ...)</span><br></pre></td></tr></table></figure></p>
-<p>其中，format是格式化字符串，与printf()中的格式化串类似；后面可以跟若干个参数，用来存储从输入中读入的结果。这里需要注意的是，后面的每个参数都必须是一个指针。返回值是一个整数，是指成功读入值的个数。<br><a id="more"></a><br>当按照格式化串读取字符完成，或者输入的字符不匹配格式化串时，scanf函数就会结束执行。  </p>
-<p>下面列出一些使用scanf的例子：  </p>
-<p>1.读入日期格式：<br><figure class="highlight c"><figcaption><span>scanfDate.c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">scanfDate</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> day, year;</span><br><span class="line">    <span class="keyword">char</span> month[<span class="number">20</span>];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %s %d"</span>, &amp;day, month, &amp;year);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>scanf中用来存储读入字符的参数必须是指针，因此对于day和year这两个变量必须要使用取值符号<strong>&amp;</strong>，而month是数组，本身就是数组，因此不需要＆。  </p>
-<p>2.匹配格式化串内容<br>scanf函数中格式串可以包含任意字符，但是必须保证和输入中的相匹配。<br><figure class="highlight c"><figcaption><span>scanfDate.c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">scanfDate</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> day, month, year;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d/%d/%d"</span>, &amp;month, &amp;day, &amp;year);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>针对以上函数，输入的格式应为: mm/dd/yy，scanf函数在查找输入值的时候会自动跳过空白字符。  </p>
-<p>3.输入double型数据<br><figure class="highlight c"><figcaption><span>sum.c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sum</span><span class="params">()</span> </span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> a, b;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lf %lf"</span>, &amp;a, &amp;b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.2f\n"</span>, a + b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>这里需要注意scanf的格式化串中使用的是<strong>“%ld”</strong>，来表示double类型的转换。另外，如果scanf中的格式串若是以“\n”结束，则需要使用EOF来结束读取，通过ctrl-d组合键实现。</p>
+        <!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homepageurl="http://www.mojiexingseng.com" homepagename="回到主页"></script>
+</body>
+</html>
 
       </div>
       <footer class="article-footer">
-        <a data-url="http://mojiexingseng.com/2012/12/25/the-formatted-input-scanf/" data-id="cibuyjuen000m9ns6b20nu7c7" class="article-share-link">分享到</a>
+        <a data-url="http://mojiexingseng.com/404.html" data-id="cibuyjucl00009ns6hzocu0u3" class="article-share-link">分享到</a>
         
-          <a href="http://mojiexingseng.com/2012/12/25/the-formatted-input-scanf/#comments" class="article-comment-link">评论</a>
+          <a href="http://mojiexingseng.com/404.html#comments" class="article-comment-link">评论</a>
         
         
       </footer>
@@ -133,7 +122,7 @@
   
     <section id="comments">
       <!-- 多说评论框 start -->
-      <div class="ds-thread" data-thread-key="post-the-formatted-input-scanf" data-title="C语言中的格式化输入函数——scanf()" data-url="http://mojiexingseng.com/2012/12/25/the-formatted-input-scanf/"></div>
+      <div class="ds-thread" data-thread-key="page-undefined" data-title="" data-url="http://mojiexingseng.com/404.html"></div>
       <!-- 多说评论框 end -->
       <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
       <script type="text/javascript">
@@ -174,29 +163,6 @@
       
     </ul>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/2013/01/06/work-review-remove-redundant-data/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">下一篇</strong>
-      <p class="article-nav-title">
-        
-          那些干过的活——筛选并更新重复的商家数据
-        
-      </p>
-      <i class="icon" id="icon-chevron-right"></i>
-    </a>
-  
-  
-    <a href="/2012/12/18/enforce-signleton/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">上一篇</strong>
-      <p class="article-nav-title">使用私有构造方法或枚举类型实现单例</p>
-      <i class="icon" id="icon-chevron-left"></i>
-    </a>
-  
-</nav>
-
   
   <div class="widgets-container">
     
@@ -389,7 +355,7 @@
 <script>
   var disqus_shortname = 'mojiexingseng';
   
-  var disqus_url = 'http://mojiexingseng.com/2012/12/25/the-formatted-input-scanf/';
+  var disqus_url = 'http://mojiexingseng.com/404.html';
   
   (function(){
     var dsq = document.createElement('script');
