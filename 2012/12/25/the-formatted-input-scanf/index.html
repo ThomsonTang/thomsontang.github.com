@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>C语言中的格式化输入函数——scanf() | 摩羯行僧</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="scanf()函数和printf()函数类似，只是其功能刚好与printf相反，它是用来从标准输入中读取字符的，其形式如下：1int scanf(char *format, ...)
+其中，format是格式化字符串，与printf()中的格式化串类似；后面可以跟若干个参数，用来存储从输入中读入的结果。这里需要注意的是，后面的每个参数都必须是一个指针。返回值是一个整数，是指成功读入值的个数。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C语言中的格式化输入函数——scanf()">
+<meta property="og:url" content="http://mojiexingseng.com/2012/12/25/the-formatted-input-scanf/index.html">
+<meta property="og:site_name" content="摩羯行僧">
+<meta property="og:description" content="scanf()函数和printf()函数类似，只是其功能刚好与printf相反，它是用来从标准输入中读取字符的，其形式如下：1int scanf(char *format, ...)
+其中，format是格式化字符串，与printf()中的格式化串类似；后面可以跟若干个参数，用来存储从输入中读入的结果。这里需要注意的是，后面的每个参数都必须是一个指针。返回值是一个整数，是指成功读入值的个数。">
+<meta property="og:updated_time" content="2015-07-06T10:11:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C语言中的格式化输入函数——scanf()">
+<meta name="twitter:description" content="scanf()函数和printf()函数类似，只是其功能刚好与printf相反，它是用来从标准输入中读取字符的，其形式如下：1int scanf(char *format, ...)
+其中，format是格式化字符串，与printf()中的格式化串类似；后面可以跟若干个参数，用来存储从输入中读入的结果。这里需要注意的是，后面的每个参数都必须是一个指针。返回值是一个整数，是指成功读入值的个数。">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+    <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  
+  
+    <link rel="stylesheet" href="/scrollLoading/style.css" type="text/css">
+  
+  
+
+
+  
+
+  
+    <link href='//fonts.useso.com/css?family=Titillium+Web:300,400,600' rel='stylesheet' type='text/css'>
+    <link href="//fonts.useso.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+
+</head>
+
+<body>
+  <div id="wrap">
+    <header id="header">
+  <div id="header-outer" class="outer">
+    <div class="container">
+      <div class="container-inner">
+        <div id="header-title">
+          <h1 class="logo-wrap">
+            <a href="/" class="logo"></a>
+          </h1>
+          
+            <h2 class="subtitle-wrap">
+              <p class="subtitle">走在取经的路上</p>
+            </h2>
+          
+        </div>
+        <div id="header-inner" class="nav-container">
+          <a id="main-nav-toggle" class="nav-icon"></a>
+          <div class="nav-container-inner">
+            <ul id="main-nav">
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/">Home</a></li>
+              
+                    <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/LifeStyle/">LifeStyle</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Technology/">Technology</a><ul class="main-nav-list-child"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Technology/Algorithms/">Algorithms</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Technology/C-C/">C\C++</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Technology/Java/">Java</a></li></ul></li></ul>
+                  
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/categories/Spurs/">GoSpursGo</a></li>
+              
+                <li class="main-nav-list-item" ><a class="main-nav-list-link" href="/about/index.html">About</a></li>
+              
+            </ul>
+            <nav id="sub-nav">
+              <div id="search-form-wrap">
+                <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"><input type="hidden" name="sitesearch" value="http://mojiexingseng.com"></form>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+    <div class="container">
+      <div class="main-body container-inner">
+        <div class="main-body-inner">
+          <section id="main">
+            <div class="main-body-header">
+
+              <h1 class="header"><a class="page-title-link" href="/categories/Technology/">Technology</a></h1>
+            </div>
+            <div class="main-body-content">
+              
+  <article id="post-the-formatted-input-scanf" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+      <!--  -->
+      
+        <header class="article-header">
+          
+  
+    <h1 class="article-title" itemprop="name">
+      C语言中的格式化输入函数——scanf()
+    </h1>
+  
+
+        </header>
+      
+      <p class="article-byline">
+        <a href="/2012/12/25/the-formatted-input-scanf/" class="article-date">
+  <time datetime="2012-12-25T06:50:00.000Z" itemprop="datePublished">2012-12-25</time>
+</a>
+      </p>
+      <div class="article-entry" itemprop="articleBody">
+        <p><strong>scanf()</strong>函数和<strong>printf()</strong>函数类似，只是其功能刚好与printf相反，它是用来从标准输入中读取字符的，其形式如下：<br><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">int</span> scanf(<span class="built_in">char</span> *<span class="keyword">format</span>, ...)</span><br></pre></td></tr></table></figure></p>
+<p>其中，format是格式化字符串，与printf()中的格式化串类似；后面可以跟若干个参数，用来存储从输入中读入的结果。这里需要注意的是，后面的每个参数都必须是一个指针。返回值是一个整数，是指成功读入值的个数。<br><a id="more"></a><br>当按照格式化串读取字符完成，或者输入的字符不匹配格式化串时，scanf函数就会结束执行。  </p>
+<p>下面列出一些使用scanf的例子：  </p>
+<p>1.读入日期格式：<br><figure class="highlight c"><figcaption><span>scanfDate.c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">scanfDate</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> day, year;</span><br><span class="line">    <span class="keyword">char</span> month[<span class="number">20</span>];</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d %s %d"</span>, &amp;day, month, &amp;year);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>scanf中用来存储读入字符的参数必须是指针，因此对于day和year这两个变量必须要使用取值符号<strong>&amp;</strong>，而month是数组，本身就是数组，因此不需要＆。  </p>
+<p>2.匹配格式化串内容<br>scanf函数中格式串可以包含任意字符，但是必须保证和输入中的相匹配。<br><figure class="highlight c"><figcaption><span>scanfDate.c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">scanfDate</span><span class="params">()</span></span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> day, month, year;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d/%d/%d"</span>, &amp;month, &amp;day, &amp;year);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>针对以上函数，输入的格式应为: mm/dd/yy，scanf函数在查找输入值的时候会自动跳过空白字符。  </p>
+<p>3.输入double型数据<br><figure class="highlight c"><figcaption><span>sum.c</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">sum</span><span class="params">()</span> </span><br><span class="line"></span>&#123;</span><br><span class="line">    <span class="keyword">double</span> a, b;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%lf %lf"</span>, &amp;a, &amp;b);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%.2f\n"</span>, a + b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>这里需要注意scanf的格式化串中使用的是<strong>“%ld”</strong>，来表示double类型的转换。另外，如果scanf中的格式串若是以“\n”结束，则需要使用EOF来结束读取，通过ctrl-d组合键实现。</p>
+
+      </div>
+      <footer class="article-footer">
+        <a data-url="http://mojiexingseng.com/2012/12/25/the-formatted-input-scanf/" data-id="cibuy6ffi000le6s6vmd9fwsd" class="article-share-link">分享到</a>
+        
+          <a href="http://mojiexingseng.com/2012/12/25/the-formatted-input-scanf/#comments" class="article-comment-link">评论</a>
+        
+        
+      </footer>
+    </div>
+  </article>
+  
+    <section id="comments">
+      <!-- 多说评论框 start -->
+      <div class="ds-thread" data-thread-key="post-the-formatted-input-scanf" data-title="C语言中的格式化输入函数——scanf()" data-url="http://mojiexingseng.com/2012/12/25/the-formatted-input-scanf/"></div>
+      <!-- 多说评论框 end -->
+      <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+      <script type="text/javascript">
+        var duoshuoQuery = {short_name:'mojiexingseng'};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0] 
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+      </script>
+      <!-- 多说公共JS代码 end -->
+    </section>
+  
+
+
+            </div>
+          </section>
+          <aside id="sidebar">
+  <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+  <div class="sidebar-top">
+    <p>关注我 :</p>
+    <ul class="social-links">
+      
+        <li><a class="social-tooltip" title="github" href="https://github.com/ThomsonTang" target="_blank"><i id="icon-github" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="google_plus" href="https://plus.google.com/u/0/104816637789759418444/posts" target="_blank"><i id="icon-google_plus" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weixin" href="http://7xk5jq.com1.z0.glb.clouddn.com/homeqrcode_for_ihabitat.jpg" target="_blank"><i id="icon-weixin" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="twitter" href="/" target="_blank"><i id="icon-twitter" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="facebook" href="/" target="_blank"><i id="icon-facebook" class="icon"></i></a></li>
+      
+        <li><a class="social-tooltip" title="weibo" href="/" target="_blank"><i id="icon-weibo" class="icon"></i></a></li>
+      
+    </ul>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2013/01/06/work-review-remove-redundant-data/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <p class="article-nav-title">
+        
+          那些干过的活——筛选并更新重复的商家数据
+        
+      </p>
+      <i class="icon" id="icon-chevron-right"></i>
+    </a>
+  
+  
+    <a href="/2012/12/18/enforce-signleton/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <p class="article-nav-title">使用私有构造方法或枚举类型实现单例</p>
+      <i class="icon" id="icon-chevron-left"></i>
+    </a>
+  
+</nav>
+
+  
+  <div class="widgets-container">
+    
+      
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul id="recent-post" class="">
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2015/07/06/li-bie-de-yi-shun-jian/" class="thumbnail">
+  
+    <span style="background-image:url(http://7xk5jq.com1.z0.glb.clouddn.com/blog_basket_team.jpeg-post720x240
+)" alt="离别的一瞬间" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/LifeStyle/">LifeStyle</a></p>
+              <p class="item-title"><a href="/2015/07/06/li-bie-de-yi-shun-jian/" class="title">离别的一瞬间</a></p>
+              <p class="item-date"><time datetime="2015-07-06T09:32:45.000Z" itemprop="datePublished">2015-07-06</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2013/12/20/analysis-of-algorithms/" class="thumbnail">
+  
+    <span style="background-image:url(http://7xk5jq.com1.z0.glb.clouddn.com/tech_running-time-formular.png
+)" alt="Algorithm4th: analyzing of algorithms" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Technology/">Technology</a><i class="icon" id="icon-angle-right"></i><a class="article-category-link" href="/categories/Technology/Algorithms/">Algorithms</a></p>
+              <p class="item-title"><a href="/2013/12/20/analysis-of-algorithms/" class="title">Algorithm4th: analyzing of algorithms</a></p>
+              <p class="item-date"><time datetime="2013-12-20T03:08:00.000Z" itemprop="datePublished">2013-12-20</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2013/07/10/configure-ntp-to-synchronize-the-system-clock/" class="thumbnail">
+  
+    <span style="background-image:url(/images/blog/linux/synch-time.gif
+)" alt="Configure NTP to synchronize the system clock" class="thumbnail-image"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Technology/">Technology</a></p>
+              <p class="item-title"><a href="/2013/07/10/configure-ntp-to-synchronize-the-system-clock/" class="title">Configure NTP to synchronize the system clock</a></p>
+              <p class="item-date"><time datetime="2013-07-10T07:24:00.000Z" itemprop="datePublished">2013-07-10</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2013/01/30/recusion-vs-iteration/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Technology/">Technology</a></p>
+              <p class="item-title"><a href="/2013/01/30/recusion-vs-iteration/" class="title">Recursion vs. Iteration</a></p>
+              <p class="item-date"><time datetime="2013-01-30T08:36:00.000Z" itemprop="datePublished">2013-01-30</time></p>
+            </div>
+          </li>
+        
+          <li>
+            
+            <div class="item-thumbnail">
+              
+<a href="/2013/01/06/work-review-remove-redundant-data/" class="thumbnail">
+  
+    <span class="thumbnail-image thumbnail-none"></span>
+  
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category"><a class="article-category-link" href="/categories/Technology/">Technology</a></p>
+              <p class="item-title"><a href="/2013/01/06/work-review-remove-redundant-data/" class="title">那些干过的活——筛选并更新重复的商家数据</a></p>
+              <p class="item-date"><time datetime="2013-01-06T08:14:00.000Z" itemprop="datePublished">2013-01-06</time></p>
+            </div>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/LifeStyle/">LifeStyle</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/">Technology</a><span class="category-list-count">11</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/Algorithms/">Algorithms</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/C-C/">C\C++</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technology/Java/">Java</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/07/">七月 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/12/">十二月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/07/">七月 2013</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2013/01/">一月 2013</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/12/">十二月 2012</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2012/06/">六月 2012</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/10/">十月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2011/04/">四月 2011</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2010/07/">七月 2010</a><span class="archive-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ihabitat/">ihabitat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/life/">life</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-float">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ihabitat/" style="font-size: 10px;">ihabitat</a> <a href="/tags/life/" style="font-size: 10px;">life</a>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget-wrap widget-list">
+    <h3 class="widget-title">链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://hexo.io">Hexo</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+    
+  </div>
+</aside>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+  
+  <div class="container">
+    <div class="container-inner">
+      <a id="back-to-top" href="javascript:;"><i class="icon" id="icon-angle-up"></i></a>
+      <div class="credit">
+        <h1 class="logo-wrap">
+          <a href="/" class="logo"></a>
+        </h1>
+        <p>&copy; 2015 Thomson Tang</p>
+        <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+    
+<script>
+  var disqus_shortname = 'mojiexingseng';
+  
+  var disqus_url = 'http://mojiexingseng.com/2012/12/25/the-formatted-input-scanf/';
+  
+  (function(){
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+  <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+
+
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+
+  <script src="/scrollLoading/jquery.scrollLoading.js" type="text/javascript"></script>
+  <script src="/scrollLoading/main.js" type="text/javascript"></script>
+
+
+<script src="/js/html-patch.js" type="text/javascript"></script>
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
